@@ -1,0 +1,162 @@
+
+
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+
+/*public class NPJsonGen {
+    public static void main(String[] args) {
+
+        Scanner inp = new Scanner(System.in);
+        Random rand = new Random();
+        // number of players
+        System.out.print("Number of players:");
+        int numPl = inp.nextInt();
+        System.out.println("Due to bugs, the number of players is defaulted to 8");
+        numPl = 8;
+        // total stars per player
+        System.out.print("Number of stars per player:");
+        int starPl = inp.nextInt();
+        //staring stars per player
+        System.out.print("Number of starting stars per player:");
+        int startStarPl = inp.nextInt() ;
+        LocRet pos = new LocRet(numPl);
+        NPstar star1 = new NPstar();
+        double starx;
+        double stary;
+        double radius;
+        int starnum = 1;
+        int arrayAdd = 0;
+        ScaleCalc scaler = new ScaleCalc();
+        int res;
+
+
+
+
+
+        //Home Star positions
+        /*double posxH = rand.nextDouble() + (double) rand.nextInt(10,30);
+        double posyH = rand.nextDouble() + (double) rand.nextInt((int)(posxH/2));
+        pos.LocIn(posxH,posyH);*/
+        // todo change from point, point to length, angle
+        double radCen = rand.nextDouble() + (double) rand.nextInt(10,30);
+
+        CircleHelp home = new CircleHelp();
+        home.setRadiusLY(radCen);
+        double[] point = home.point(rand.nextInt(44));
+        double posxH = point[0];
+        double posyH = point[1];
+        pos.LocIn(posxH,posyH);
+
+        String[] homeArray;
+        homeArray = new String[8];
+        for(int num = 1; num<9; num++){
+
+            star1.NPcap(starnum, pos.LocPlX(num), pos.LocPlY(num), num);
+            homeArray[arrayAdd] = star1.jsonret();
+            arrayAdd++;
+            starnum++;
+        }
+
+        arrayAdd = 0;
+
+        //code to generate Claimed star array
+        //Does not include Home star
+        CircleHelp claimed = new CircleHelp();
+        double[] point2;
+        String[] ownedArray;
+        ownedArray = new String[((startStarPl-1)*8)];
+        for(int i = 1; i < startStarPl; i++)
+        {
+            // todo change to radius, angle system
+            //starx = posxH + (rand.nextBoolean() ? (rand.nextDouble()/4) : -(rand.nextDouble()/4));
+            //stary = posyH + (rand.nextBoolean() ? (rand.nextDouble()/4) : -(rand.nextDouble()/4));
+
+
+            claimed.setRadius(rand.nextDouble(0.2));
+
+            point2 = claimed.point(rand.nextInt(359));
+            starx = point2[0];
+            stary = point2[1];
+            pos.LocIn(starx,stary);
+
+            res = rand.nextInt(5,50);
+            for(int num = 1; num < 9; num++)
+            {
+
+                star1.NPclaimed(starnum, pos.LocPlX(num), pos.LocPlY(num),res);
+                star1.setPuid(num,true);
+                ownedArray[arrayAdd] = star1.jsonret();
+                arrayAdd++;
+                starnum++;
+            }
+
+
+        }
+        arrayAdd = 0;
+        star1.setPuid(0,true);
+        //End code for claimed star array
+
+    //Code for unclaimed stars array
+        //Code to calculate number of indexes to create
+        int notCl = starPl - startStarPl;
+        String[] notClArray = new String[(notCl*8)];
+
+        //Creates new circle helper to make a new circle at 0,0
+        CircleHelp notCirc = new CircleHelp();
+       double[] point1;
+        //Repeat for every 8 stars
+       for(int i = 1; i <= notCl; i++)
+        {
+            //todo change to radius, angle method
+            /*double starx1 = rand.nextDouble() + (double) rand.nextInt(1,10);
+            double stary1;
+            try
+            {
+                stary1 = rand.nextDouble() + (double) rand.nextInt((int)(starx1/2));
+            }
+            catch (Exception e){
+                stary1 = rand.nextDouble();
+            }*/
+            //Randomly generates radius and angle from 0 degrees before returning the point at
+            //that spot
+
+            double radnotCirc = (double) rand.nextInt(2,30)+rand.nextDouble();
+            notCirc.setRadiusLY(radnotCirc);
+            point1 = notCirc.point(rand.nextInt());
+            starx = point1[0];
+            stary = point1[1];
+            //sets point to generate points
+            pos.LocIn(starx,stary);
+
+            for(int num = 1; num<9; num++)
+            {
+                star1.NPclaimed(starnum,pos.LocPlX(num),pos.LocPlY(num), 0, false);
+                notClArray[arrayAdd] = star1.jsonret();
+                arrayAdd++;
+                starnum++;
+            }
+
+        }
+
+
+        System.out.println("{\"stars\": [ ");
+        for(String i : homeArray)
+        {
+            System.out.println(i);
+        }
+        for (String i : ownedArray)
+        {
+            System.out.println(i);
+        }
+        for (String i : notClArray)
+        {
+            System.out.println(i);
+        }
+        System.out.println("]");
+    }
+
+
+}*/
