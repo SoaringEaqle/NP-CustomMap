@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class NameGen {
-
+    static Random rand = new Random();
     private static String[] names = {
             "Altairis", "Betelgara", "Cygniar", "Draxilon", "Eridanus", "Fornaxor",
             "Geminor", "Heliox", "Indrion", "Jovaris", "Kalypsi", "Lycoran",
@@ -87,15 +87,12 @@ public class NameGen {
 
 
     public static String nextName() {
-        String prefix = prefixes[con.rand.nextInt(prefixes.length)];
-        String middle = middles[con.rand.nextInt(middles.length)];
-        String suffix = suffixes[con.rand.nextInt(suffixes.length)];
+        String prefix = prefixes[rand.nextInt(prefixes.length)];
+        String middle = middles[rand.nextInt(middles.length)];
+        String suffix = suffixes[rand.nextInt(suffixes.length)];
         return prefix + middle + suffix;
     }
 
-    public static String newName(){
-        return names[con.rand.nextInt(names.length)];
-    }
 
 
 }
