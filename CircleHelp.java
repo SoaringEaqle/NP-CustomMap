@@ -28,15 +28,15 @@ public class CircleHelp {
     {
         double difX = r * Math.cos(angle);
 
-        //double x = difX + cenX;
-        return difX;
+        double x = difX + cenX;
+        return x;
 
     }
     public static double PtoCY(double r, double angle, double cenY)
     {
         double difY = r * Math.sin(angle);
-        //double y = difY + cenY;
-        return difY;
+        double y = difY + cenY;
+        return y;
     }
     public static double retA(double x, double y, double cenX, double cenY)
     {
@@ -49,4 +49,10 @@ public class CircleHelp {
         double[] pol = CircleHelp.CtoP(x, y, cenX, cenY);
         return pol[0];
     }
+
+    public static double round4(double num)
+    {
+        return (Math.round(num * 10000.0)/10000.0);
+    }
+
 }
