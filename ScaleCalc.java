@@ -12,7 +12,7 @@ public class ScaleCalc {
         return units;
     }
 
-    public double maxRange (int level)
+    public double maxRange(int level)
     {
         double maxRange1 = level + 4;
         return maxRange1;
